@@ -91,6 +91,44 @@ public class Sistema {
     }
 
     private void menuPrincipal(){
+        while (true) {
+            System.out.println(
+                "\n--- Menu Principal ---\n" + 
+                "1. Opções em cartaz\n"+
+                "2. Realizar checkin do ingresso\n"+
+                "3. Bomboniere\n"+
+                "0. Sair"
+            );
+            int opcao = Console.lerInt();
 
+            switch (opcao) {
+                case 1:
+                    opcoesEmCartaz();
+                    break;
+                case 2:
+                    realizarCheckin();
+                    break;
+                case 3:
+                    bomboniere();
+                    break;
+                case 0:
+                    usuarioAtual = null;
+                    return;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+        }
+    }
+
+    private void opcoesEmCartaz(){
+
+    }
+
+    private void realizarCheckin(){
+
+    }
+
+    private void bomboniere(){
+        
     }
 }
