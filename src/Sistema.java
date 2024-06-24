@@ -1,6 +1,18 @@
+import java.util.ArrayList;
+
 public class Sistema {
+    private ArrayList<Usuario> usuarios;
+    private ArrayList<Ingresso> ingressos;
+    private Usuario usuarioAtual;
+
+    public Sistema() {
+        this.usuarios = Arquivo.carregarUsuarios();
+        this.ingressos = Arquivo.carregarIngressos();
+        this.usuarioAtual = null;
+    }
 
     public void iniciar() {
+        
         while (true) {
             System.out.println(
                 "\n--- Acessar Sistema ---\n" +
@@ -29,10 +41,9 @@ public class Sistema {
     }
 
     private void entrar(){
-
     }
 
     private void cadastrar(){
-        
+
     }
 }
