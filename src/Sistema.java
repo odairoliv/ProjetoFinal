@@ -251,7 +251,38 @@ public class Sistema {
     }
 
     private void realizarCheckin(){
-
+        ArrayList<Ingresso> ingressosUsuario = new ArrayList<>();
+        for (Ingresso ingresso : ingressos) {
+            if (ingresso.getId().equals(usuarioAtual.getId())) {
+                ingressosUsuario.add(ingresso);
+            }
+        }
+    
+        if (ingressosUsuario.isEmpty()) {
+            System.out.println("Você não possui ingressos.");
+            return;
+        }
+    
+        System.out.println("Seus ingressos:");
+        for (int i = 0; i < ingressosUsuario.size(); i++) {
+            Ingresso ingresso = ingressosUsuario.get(i);
+            System.out.println((i + 1) + ". Filme: " + ingresso.getFilme() + ", Assento: " + ingresso.getAssento());
+        }
+    
+        System.out.print("Escolha o ingresso para checkin (0 para sair): ");
+        int escolha = Console.lerInt();
+    
+        if (escolha > 0 && escolha <= ingressosUsuario.size()) {
+            Ingresso ingressoEscolhido = ingressosUsuario.get(escolha - 1);
+            System.out.println("Realizar checkin para o ingresso do filme " + ingressoEscolhido.getFilme() + ", assento " + ingressoEscolhido.getAssento() + "? (1. Sim, 2. Não, 3. Voltar, 0. Sair)");
+            int opcao = Console.lerInt();
+    
+            if (opcao == 1) {
+                System.out.println("Checkin realizado com sucesso!");
+            } else if (opcao == 0) {
+                System.exit(0);
+            }
+        }
     }
 
     private void bomboniere(){
