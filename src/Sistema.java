@@ -287,5 +287,67 @@ public class Sistema {
 
     private void bomboniere(){
 
+        while (true) {
+            System.out.println("1. Combo I (Pipoca Pequena + Refri) R$30,00\n2. Combo II (Pipoca Média + Refri + MM) R$50,00\n3. Combo III (Pipoca Grande + 2 Refri + MM) R$70,00\n4. Voltar\n5. Pular\n0. Sair");
+            int opcao = Console.lerInt();
+            double precoCombo = 0;
+            String combo = "";
+
+            switch (opcao) {
+                case 1:
+                    precoCombo = 30.0;
+                    combo = "Combo I (Pipoca Pequena + Refri)";
+                    break;
+                case 2:
+                    precoCombo = 50.0;
+                    combo = "Combo II (Pipoca Média + Refri + MM)";
+                    break;
+                case 3:
+                    precoCombo = 70.0;
+                    combo = "Combo III (Pipoca Grande + 2 Refri + MM)";
+                    break;
+                case 4:
+                    return;
+                case 5:
+                    resumoCompra(0, "");
+                    return;
+                case 0:
+                    System.exit(0);
+                default:
+                    System.out.println("Opção inválida.");
+            }
+
+            if (opcao >= 1 && opcao <= 3) {
+                resumoCompra(precoCombo, combo);
+                return;
+            }
+        }
+    }
+
+      private void resumoCompra(double precoCombo, String combo) {
+        System.out.println("\n--- Resumo de compra ---");
+        System.out.println("Ingresso: " + ingressos.get(ingressos.size() - 1).getFilme() + " - R$" + ingressos.get(ingressos.size() - 1).getPreco());
+        if (!combo.isEmpty()) {
+            System.out.println(combo + " - R$" + precoCombo);
+        }
+        double total = ingressos.get(ingressos.size() - 1).getPreco() + precoCombo;
+        System.out.println("Total: R$" + total);
+
+        System.out.println("1. Realizar Pagamento\n2. Voltar\n0. Sair");
+        int opcao = Console.lerInt();
+
+        switch (opcao) {
+            case 1:
+                System.out.println("Pagamento realizado com sucesso!");
+                menuPrincipal();
+                break;
+            case 2:
+                bomboniere();
+                break;
+            case 0:
+                System.exit(0);
+            default:
+                System.out.println("Opção inválida.");
+        }
     }
 }
